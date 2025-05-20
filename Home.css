@@ -1,0 +1,115 @@
+:root {
+  --base-color: white;
+  --base-variant: #e8e9ed;
+  --text-color: #111528;
+  --secondary-text: #232738;
+  --primary-color: #3a435d;
+  --accent-color: #0071ff;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  font-family: "Inter Tight", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Navbar {
+  width: 100%;
+  height: 50px;
+  background-color: #1c1c1e;
+  color: #ffffff;
+  padding: 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.Navbar ul li {
+  align-items: center;
+  position: relative;
+}
+
+.Navbar ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.Navbar ul li a:hover {
+  color: #10a37f;
+}
+
+.Navbar ul li a:hover ::before {
+  width: 100%;
+}
+
+.Navbar,
+.Navbar ul li a {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.darkmode {
+  --base-color: #070b1d;
+  --base-variant: #101425;
+  --text-color: #ffffff;
+  --secondary-text: #a4a5b8;
+  --primary-color: #3a435d;
+  --accent-color: #0071ff;
+}
+
+.cta-button {
+  background-color: var(--accent-color);
+}
+
+#theme-switch {
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--base-variant);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+#theme-switch svg {
+  fill: var(--primary-color);
+}
+#theme-switch svg:last-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+  display: block;
+}
+
+.Greeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
