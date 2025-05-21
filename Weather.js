@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 async function getWeather() {
-  const API = "9e17449b13a117c88cc2551a96318610";
+  const API = "";
   const city = document.getElementById("city").value;
   if (!city) {
     alert("Plese Enter a City");
