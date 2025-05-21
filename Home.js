@@ -18,7 +18,11 @@ greeting.innerText = `Good ${greet} ${name}`;
 
 let darkmode = localStorage.getItem("darkmode");
 const themeSwitch = document.getElementById("theme-switch");
-
+if (darkmode === "active") {
+  document.body.classList.add("darkmode");
+} else {
+  document.body.classList.remove("darkmode");
+}
 const enableDarkmode = () => {
   document.body.classList.add("darkmode");
   localStorage.setItem("darkmode", "active");

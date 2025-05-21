@@ -6,14 +6,17 @@
   --primary-color: #3a435d;
   --accent-color: #0071ff;
   --nav-color: #6d6d6d;
+  --button-color: rgb(0, 123, 194);
+  --buooton-hover: rgb(104, 148, 165);
+  --input-color: rgb(236, 236, 236);
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
-  display: inherit;
-
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
   background-color: var(--base-color);
   color: var(--text-color);
   font-family: "Inter Tight", sans-serif;
@@ -21,6 +24,32 @@ body {
   font-weight: 400;
   font-style: normal;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 50px);
+}
+
+.unit-toggle {
+  display: none;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  user-select: none;
+  color: #bbb;
+}
+
+.unit-toggle span {
+  padding: 0 5px;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.unit-toggle .active {
+  color: white;
+  font-weight: bold;
 }
 
 .Navbar {
@@ -78,6 +107,9 @@ body {
   --primary-color: #3a435d;
   --accent-color: #0071ff;
   --nav-color: #000000;
+  --button-color: rgb(2, 11, 138);
+  --buooton-hover: rgb(30, 36, 56);
+  --input-color: white;
 }
 
 .cta-button {
@@ -112,7 +144,9 @@ body {
 .darkmode #theme-switch svg:last-child {
   display: block;
 }
-
+#unit {
+  display: none;
+}
 #widget {
   background: rgba(255, 255, 255, 0.3);
   max-width: 400px;
@@ -127,6 +161,7 @@ body {
 input {
   width: calc(100% - 16px);
   padding: 8px;
+  background-color: var(--input-color);
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid white;
@@ -134,8 +169,8 @@ input {
 }
 
 .Submit {
-  background: #debff4;
-  color: white;
+  background: var(--button-color);
+  color: var(--text-color);
   padding: 10px;
   border: none;
   border-radius: 10px;
@@ -145,7 +180,7 @@ input {
   font-size: 15px;
 }
 .Submit:hover {
-  background: #8b48d7;
+  background: var(--buooton-hover);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -166,22 +201,36 @@ input {
   display: none;
 }
 
-#forecast {
+#Forecast {
   margin-top: 50px;
   overflow-x: auto;
   white-space: nowrap;
   display: flex;
   justify-content: space-between;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
+}
+
+.Forecast::-webkit-scrollbar {
+  height: 6px;
+}
+.Forecast::-webkit-scrollbar-track {
+  background: transparent;
+}
+.Forecast::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 3px;
 }
 
 .hourly-item {
   flex: 0 0 auto;
   width: 80px;
   display: flex;
+  justify-items: center;
   flex-direction: column;
   align-items: center;
   margin-right: 10px;
-  color: white;
+  color: var(--text-color);
 }
 
 .hourly-item img {
