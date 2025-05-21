@@ -1,21 +1,29 @@
-const now = new Date();
-const Time = now.toLocaleTimeString();
-const CurrTime = parseInt(Time.slice(0, 2));
-let greet = "";
-if (CurrTime >= 0 && CurrTime < 12) {
-  greet = "Morning";
-} else {
-  greet = "Evening";
-}
-let name = localStorage.getItem("name");
+require("dotenv").config();
 
-if (!name) {
-  name = prompt("What's your name?");
-  if (name) localStorage.setItem("name", name);
-}
-const greeting = document.getElementById("Greeting");
-greeting.innerText = `Good ${greet} ${name}`;
+async function getWeather() {
+  const API = "9e17449b13a117c88cc2551a96318610";
+  const city = document.getElementById("city").value;
+  if (!city) {
+    alert("Plese Enter a City");
+    return;
+  }
+  try {
+    const currentWeather = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}&units=metric`
+    );
+    const forecast = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API}&units=metric`
+    );
 
+    const weatherJson = await currentWeather.json();
+    const forecastJson = await forecast.json();
+
+    console.log(weatherJson);
+    console.log(forecastJson);
+  } catch (err) {
+    console.error("Error fetching weather:", err);
+  }
+}
 let darkmode = localStorage.getItem("darkmode");
 const themeSwitch = document.getElementById("theme-switch");
 
