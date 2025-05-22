@@ -45,21 +45,23 @@
         </svg>
       </button>
     </nav>
-    <div class="center-wrapper">
+    <main class="page">
       <div id="widget">
-        <h2>Weather Widget</h2>
-        <input type="text" id="city" placeholder="Enter City" />
-        <button class="Submit" id="search-btn">Search</button>
-        <img id="weather-icon" style="display: none" />
-        <div id="temp"></div>
-        <div id="unit" class="unit">
-          <span id="celsius" class="active">°C</span> |
-          <span id="fahrenheit">°F</span>
+        <div class="widget-inner-surface">
+          <h2>Weather Widget</h2>
+          <input type="text" id="city" placeholder="Enter City" />
+          <button class="Submit" id="search-btn">Search</button>
+          <img id="weather-icon" style="display: none" />
+          <div id="temp"></div>
+          <div id="unit" class="unit">
+            <span id="celsius" class="active">°C</span> |
+            <span id="fahrenheit">°F</span>
+          </div>
+          <div id="weather"></div>
+          <div id="Forecast"></div>
         </div>
-        <div id="weather"></div>
-        <div id="Forecast"></div>
       </div>
-    </div>
+    </main>
     <script type="module" src="Weather.js"></script>
   </body>
 </html>

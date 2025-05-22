@@ -9,6 +9,8 @@
   --button-color: rgb(0, 123, 194);
   --buooton-hover: rgb(104, 148, 165);
   --input-color: rgb(236, 236, 236);
+  --glow-color: rgb(0, 162, 255);
+  --widget-color: rgb(238, 238, 238);
 }
 
 body {
@@ -24,6 +26,13 @@ body {
   font-weight: 400;
   font-style: normal;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page {
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .center-wrapper {
@@ -110,6 +119,8 @@ body {
   --button-color: rgb(2, 11, 138);
   --buooton-hover: rgb(30, 36, 56);
   --input-color: white;
+  --glow-color: rgb(0, 38, 255);
+  --widget-color: rgb(28, 27, 36);
 }
 
 .cta-button {
@@ -148,16 +159,74 @@ body {
   display: none;
 }
 #widget {
-  background: rgba(255, 255, 255, 0.3);
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  /* z-index: 1; /* You might not strictly need z-index here anymore, but can keep if it helps with other page elements */
+  background: transparent; /* Crucial change */
+  max-width: 400px; /* Keep sizing */
+  /* padding: 20px; /* Remove padding, it goes to the inner surface */
+  border-radius: 15px; /* This can stay on the main widget to clip if necessary, or move to inner */
+  /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Move to inner surface */
+  /* backdrop-filter: blur(10px); /* Move to inner surface */
+  /* border: 1px solid rgba(255, 255, 255, 0.1); /* Move to inner surface */
   text-align: center;
 }
+.widget-inner-surface {
+  position: relative; /* To establish a stacking context for its own content if needed */
+  z-index: 5; /* Higher than the glow pseudo-elements */
+  background-color: var(--widget-color);
+  border-radius: 15px; /* Match widget's border-radius */
+  padding: 20px; /* Original widget padding */
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /* Ensure text color from :root/.darkmode is inherited or set if needed */
+  color: var(--text-color);
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+#widget::after,
+#widget::before {
+  animation: spin 5s linear infinite;
+  content: "";
+  position: absolute;
+  height: 100%; /* Relative to #widget */
+  width: 100%; /* Relative to #widget */
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent 50%,
+    var(--glow-color)
+  );
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  padding: 3px; /* This makes them slightly larger for the border effect */
+  border-radius: 15px; /* Match styling */
+  z-index: -3;
+}
 
+#widget::before {
+  /* Blurred glow, furthest back */
+  filter: blur(1.5rem);
+  opacity: 0.5;
+  z-index: -2; /* Lower z-index */
+}
+
+#widget::after {
+  /* Sharper glow, on top of ::before but below surface */
+  /* Remove opacity/filter if it was only for ::before */
+  z-index: -1; /* Higher than ::before, but lower than .widget-inner-surface */
+}
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
 input {
   width: calc(100% - 16px);
   padding: 8px;

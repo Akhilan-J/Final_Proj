@@ -27,8 +27,7 @@ todoList.addEventListener("click", (e) => deleteCheck(e));
 
 function addTodo(event) {
   event.preventDefault();
-
-  // Don't add empty todos
+  // dont add null values
   if (!todoInput.value.trim()) return;
 
   const todoDiv = document.createElement("div");
@@ -38,7 +37,6 @@ function addTodo(event) {
   newTodo.classList.add("todo-item");
   todoDiv.appendChild(newTodo);
 
-  // Save to local storage with completion status
   saveLocalTodos({ text: todoInput.value, completed: false });
 
   const completedButton = document.createElement("button");
@@ -57,7 +55,7 @@ function addTodo(event) {
 
 function deleteCheck(e) {
   const item = e.target;
-
+  // to get the rigt element to delete
   if (
     item.classList[0] === "trash-btn" ||
     item.parentElement.classList[0] === "trash-btn"
@@ -68,14 +66,12 @@ function deleteCheck(e) {
         : item.parentElement.parentElement;
     removeLocalTodos(todo);
 
-    // Add a CSS transition class for smooth deletion
     todo.style.transition = "transform 0.3s ease, opacity 0.3s ease";
-    todo.style.transform = "translateX(100%)";
     todo.style.opacity = "0";
 
-    setTimeout(() => {
+    todo.addEventListener("transitionend", () => {
       todo.remove();
-    }, 300);
+    });
   }
 
   if (
@@ -87,8 +83,6 @@ function deleteCheck(e) {
         ? item.parentElement
         : item.parentElement.parentElement;
     todo.classList.toggle("completed");
-
-    // Update completion status in localStorage
     updateTodoCompletion(todo);
   }
 }
@@ -100,6 +94,7 @@ function saveLocalTodos(todoObj) {
   } else {
     todos = JSON.parse(localStorage.getItem("todos"));
   }
+  console.log(todos);
   todos.push(todoObj);
   localStorage.setItem("todos", JSON.stringify(todos));
 }
@@ -113,7 +108,6 @@ function getLocalTodos() {
   }
 
   todos.forEach(function (todoObj) {
-    // Handle both old format (string) and new format (object)
     const todoText = typeof todoObj === "string" ? todoObj : todoObj.text;
     const isCompleted = typeof todoObj === "object" ? todoObj.completed : false;
 
@@ -129,12 +123,12 @@ function getLocalTodos() {
     todoDiv.appendChild(newTodo);
 
     const completedButton = document.createElement("button");
-    completedButton.innerHTML = '<i class="fas fa-check-circle"></i>'; // Fixed: was </li> should be </i>
+    completedButton.innerHTML = '<i class="fas fa-check-circle"></i>';
     completedButton.classList.add("complete-btn");
     todoDiv.appendChild(completedButton);
 
     const trashButton = document.createElement("button");
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>'; // Fixed: was </li> should be </i>
+    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
     trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
 
@@ -151,8 +145,6 @@ function removeLocalTodos(todo) {
   }
 
   const todoText = todo.children[0].innerText;
-
-  // Find and remove the todo item
   todos = todos.filter((todoObj) => {
     const text = typeof todoObj === "string" ? todoObj : todoObj.text;
     return text !== todoText;
@@ -172,16 +164,13 @@ function updateTodoCompletion(todoElement) {
   const todoText = todoElement.children[0].innerText;
   const isCompleted = todoElement.classList.contains("completed");
 
-  // Update the completion status
   todos = todos.map((todoObj) => {
     if (typeof todoObj === "string") {
-      // Convert old format to new format
       if (todoObj === todoText) {
         return { text: todoObj, completed: isCompleted };
       }
       return { text: todoObj, completed: false };
     } else {
-      // Handle new format
       if (todoObj.text === todoText) {
         return { ...todoObj, completed: isCompleted };
       }
