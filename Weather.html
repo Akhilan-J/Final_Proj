@@ -17,7 +17,7 @@
       <ul>
         <li><a href="/Home.html">Home</a></li>
         <li><a href="/Weather.html">Weather</a></li>
-        <li><a href="#">Tasks</a></li>
+        <li><a href="/Tasks.html">Tasks</a></li>
         <li><a href="#">Notes</a></li>
       </ul>
       <button id="theme-switch">
@@ -47,9 +47,9 @@
     </nav>
     <div class="center-wrapper">
       <div id="widget">
-        <h2>Weather Forecast</h2>
+        <h2>Weather Widget</h2>
         <input type="text" id="city" placeholder="Enter City" />
-        <button class="Submit" onclick="getWeather()">Search</button>
+        <button class="Submit" id="search-btn">Search</button>
         <img id="weather-icon" style="display: none" />
         <div id="temp"></div>
         <div id="unit" class="unit">
@@ -60,6 +60,6 @@
         <div id="Forecast"></div>
       </div>
     </div>
-    <script src="Weather.js"></script>
+    <script type="module" src="Weather.js"></script>
   </body>
 </html>

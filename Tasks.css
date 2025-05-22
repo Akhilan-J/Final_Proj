@@ -6,6 +6,9 @@
   --primary-color: #3a435d;
   --accent-color: #0071ff;
   --nav-color: #6d6d6d;
+  --button-color: rgb(0, 123, 194);
+  --buooton-hover: rgb(104, 148, 165);
+  --input-color: rgb(236, 236, 236);
 }
 
 body {
@@ -75,6 +78,9 @@ body {
   --primary-color: #3a435d;
   --accent-color: #0071ff;
   --nav-color: #000000;
+  --button-color: rgb(2, 11, 138);
+  --buooton-hover: rgb(30, 36, 56);
+  --input-color: white;
 }
 
 #name-change {
@@ -89,6 +95,110 @@ body {
 }
 .cta-button {
   background-color: var(--accent-color);
+}
+
+.fa-plus-circle {
+  margin-top: 0.3rem;
+  margin-left: -8px;
+}
+
+form input {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  font-size: 1.8rem;
+  border: none;
+  background: var(--input-color);
+  border-radius: 2rem;
+}
+
+form button {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  font-size: 1.8rem;
+  text-align: center;
+  border: none;
+  background: var(--input-color);
+  border-radius: 2rem;
+  color: rgb(0, 255, 55);
+  background: white;
+  cursor: pointer;
+  transition: all 0.6 ease;
+  margin-left: 0.5rem;
+}
+
+form button:hover {
+  color: white;
+  background: rgb(9, 255, 0);
+  transition: all 0.6 ease;
+}
+form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  width: 1000px;
+  list-style: none;
+}
+
+.todo {
+  margin: 0.5rem;
+  padding-left: 0.5rem;
+  background: white;
+  color: black;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+  border-radius: 2rem;
+}
+
+.todo li {
+  flex: 100;
+  list-style: none;
+}
+
+.trash-btn,
+.complete-btn {
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.complete-btn {
+  background: rgb(0, 140, 255);
+}
+
+.trash-btn {
+  border-top-right-radius: 1.75rem;
+  border-bottom-right-radius: 1.75rem;
+  background: rgb(255, 0, 0);
+}
+
+.todo-item {
+  padding: 0rem 1rem;
+}
+
+.fa-trash,
+.fa-check-circle {
+  pointer-events: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 #theme-switch {

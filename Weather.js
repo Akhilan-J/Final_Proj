@@ -1,3 +1,6 @@
+import { API_KEY } from "./API.js";
+console.log(API_KEY);
+console.log("Hello");
 let unit = "metric";
 let currentCity = "";
 
@@ -34,7 +37,7 @@ function updateToggleUI() {
 }
 
 async function getWeather() {
-  const API = "9e17449b13a117c88cc2551a96318610";
+  const API = API_KEY;
   const city = document.getElementById("city").value;
   currentCity = city;
   if (!city) {
@@ -60,6 +63,7 @@ async function getWeather() {
     console.error("Error fetching weather:", err);
   }
 }
+document.getElementById("search-btn").addEventListener("click", getWeather);
 
 function displayWeather(data) {
   const tempDivInfo = document.getElementById("temp");
