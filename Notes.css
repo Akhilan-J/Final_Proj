@@ -1,0 +1,283 @@
+:root {
+  --base-color: white;
+  --base-variant: #e8e9ed;
+  --text-color: #111528;
+  --secondary-text: #232738;
+  --primary-color: #3a435d;
+  --accent-color: #0071ff;
+  --nav-color: #6d6d6d;
+  --button-color: rgb(0, 123, 194);
+  --buooton-hover: rgb(104, 148, 165);
+  --input-color: rgb(236, 236, 236);
+  --glow-color: rgb(0, 162, 255);
+  --widget-color: rgb(238, 238, 238);
+  --note-box-color: rgb(230, 230, 230) 6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--base-color);
+  color: var(--text-color);
+  font-family: "Inter Tight", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+}
+.center-wrapper {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#name-change {
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--base-variant);
+  position: fixed;
+  right: 85px;
+  top: 20px;
+}
+
+.unit-toggle {
+  display: none;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  user-select: none;
+  color: #bbb;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#notes-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  width: min(90%, 900px);
+}
+
+.note-box {
+  position: relative;
+  background: var(--note-box-color);
+  color: var(--text-color);
+  padding: 1.25rem;
+  border-radius: 12px;
+  min-height: 120px;
+  box-shadow: 0 4px 12px #0003;
+  transition: transform 0.15s;
+  word-wrap: break-word;
+}
+
+.note-box.light {
+  background: #fafafa;
+  color: #111528;
+  box-shadow: 0 4px 10px #0001;
+}
+
+.note-box p {
+  margin: 0;
+  white-space: pre-line;
+}
+.delete-note-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  border: none;
+  background: #ff4d4f;
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 22px;
+}
+.delete-note-btn:hover {
+  background: #ff6668;
+}
+.modal textarea {
+  width: 100%;
+  min-height: 100px;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  color: #333;
+}
+.unit-toggle span {
+  padding: 0 5px;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.unit-toggle .active {
+  color: white;
+  font-weight: bold;
+}
+
+.Navbar {
+  width: 100%;
+  height: 50px;
+  background-color: var(--base-variant);
+  color: var(--text-color);
+  padding: 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.Navbar ul li {
+  align-items: center;
+  position: relative;
+}
+
+.Navbar ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--text-color);
+  transition: 0.3s ease;
+}
+
+.Navbar ul li a:hover {
+  color: var(--accent-color);
+}
+
+.Navbar ul li a:hover ::before {
+  width: 100%;
+}
+
+.Navbar,
+.Navbar ul li a {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.darkmode {
+  --base-color: #070b1d;
+  --base-variant: #101425;
+  --text-color: #ffffff;
+  --secondary-text: #a4a5b8;
+  --primary-color: #3a435d;
+  --accent-color: #0071ff;
+  --nav-color: #000000;
+  --button-color: rgb(2, 11, 138);
+  --buooton-hover: rgb(30, 36, 56);
+  --input-color: white;
+  --glow-color: rgb(0, 38, 255);
+  --widget-color: rgb(28, 27, 36);
+  --note-box-color: #121826;
+}
+
+.cta-button {
+  background-color: var(--accent-color);
+}
+
+#theme-switch {
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--base-variant);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+#theme-switch svg {
+  fill: var(--primary-color);
+}
+#theme-switch svg:last-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+  display: block;
+}
+
+.createBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  padding: 15px 25px;
+  border-radius: 40px;
+  cursor: pointer;
+  text-align: center;
+  width: fit-content;
+}
+.createBtn:hover {
+  background-color: var(--buooton-hover);
+}

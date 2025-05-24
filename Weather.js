@@ -36,6 +36,12 @@ function updateToggleUI() {
   }
 }
 
+const profileBtn = document.getElementById("name-change");
+profileBtn.addEventListener("click", () => {
+  name = prompt("What's your name?");
+  if (name) localStorage.setItem("name", name);
+});
+
 async function getWeather() {
   const API = API_KEY;
   const city = document.getElementById("city").value;

@@ -9,6 +9,7 @@
   --button-color: rgb(0, 123, 194);
   --buooton-hover: rgb(104, 148, 165);
   --input-color: rgb(236, 236, 236);
+  --task-color: rgb(233, 233, 233);
 }
 
 body {
@@ -21,6 +22,8 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
 }
 
 .Navbar {
@@ -81,6 +84,7 @@ body {
   --button-color: rgb(2, 11, 138);
   --buooton-hover: rgb(30, 36, 56);
   --input-color: white;
+  --task-color: #1c1b24;
 }
 
 #name-change {
@@ -106,8 +110,10 @@ form input {
   padding: 0.5rem;
   padding-left: 1rem;
   font-size: 1.8rem;
-  border: none;
-  background: var(--input-color);
+  color: var(--text-color);
+  border: 1px;
+  border-color: #ffffff;
+  background: var(--task-color);
   border-radius: 2rem;
 }
 
@@ -119,8 +125,8 @@ form button {
   border: none;
   background: var(--input-color);
   border-radius: 2rem;
-  color: rgb(0, 255, 55);
-  background: white;
+  color: white;
+  background: rgb(0, 255, 34);
   cursor: pointer;
   transition: all 0.6 ease;
   margin-left: 0.5rem;
@@ -128,7 +134,7 @@ form button {
 
 form button:hover {
   color: white;
-  background: rgb(9, 255, 0);
+  background: rgb(3, 78, 0);
   transition: all 0.6 ease;
 }
 form {
@@ -153,8 +159,8 @@ form {
 .todo {
   margin: 0.5rem;
   padding-left: 0.5rem;
-  background: white;
-  color: black;
+  background: var(--task-color);
+  color: var(--text-color);
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
