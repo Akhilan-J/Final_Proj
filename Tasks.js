@@ -1,3 +1,4 @@
+//Personalized greeting
 let greet = "";
 let name = localStorage.getItem("name");
 
@@ -17,6 +18,7 @@ profileBtn.addEventListener("click", () => {
 const greeting = document.getElementById("Greeting");
 greeting.innerText = `${name}'s Tasks`;
 
+//Tasks
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todos");
@@ -181,6 +183,7 @@ function updateTodoCompletion(todoElement) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
+//Light or dark mode
 let darkmode = localStorage.getItem("darkmode");
 const themeSwitch = document.getElementById("theme-switch");
 

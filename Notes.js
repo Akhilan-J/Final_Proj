@@ -1,4 +1,5 @@
-let name = localStorage.getItem("name") ?? "";
+//Personalized greeting
+let name = localStorage.getItem("name");
 if (!name) {
   name = prompt("What's your name?") || "Anonymous";
   localStorage.setItem("name", name);
@@ -15,6 +16,7 @@ document.getElementById("name-change").addEventListener("click", () => {
   }
 });
 
+//notes
 const modal = document.getElementById("announcementModal");
 const txtArea = document.getElementById("announcementText");
 
@@ -97,6 +99,7 @@ function deleteNote(id) {
   renderNotes();
 }
 
+//Light or Dark mode
 let darkmode = localStorage.getItem("darkmode");
 const themeSwitch = document.getElementById("theme-switch");
 if (darkmode === "active") {

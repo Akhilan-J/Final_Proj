@@ -1,6 +1,5 @@
+//logic for farenheight or clelsius
 import { API_KEY } from "./API.js";
-console.log(API_KEY);
-console.log("Hello");
 let unit = "metric";
 let currentCity = "";
 
@@ -10,7 +9,7 @@ const fahrenheitBtn = document.getElementById("fahrenheit");
 celsiusBtn.addEventListener("click", () => {
   if (unit !== "metric") {
     unit = "metric";
-    updateToggleUI();
+    update();
     if (currentCity) getWeather(currentCity);
   }
 });
@@ -18,12 +17,12 @@ celsiusBtn.addEventListener("click", () => {
 fahrenheitBtn.addEventListener("click", () => {
   if (unit !== "imperial") {
     unit = "imperial";
-    updateToggleUI();
+    update();
     if (currentCity) getWeather(currentCity);
   }
 });
 
-function updateToggleUI() {
+function update() {
   const celsiusBtn = document.getElementById("celsius");
   const fahrenheitBtn = document.getElementById("fahrenheit");
 
@@ -36,12 +35,14 @@ function updateToggleUI() {
   }
 }
 
+// Change name
 const profileBtn = document.getElementById("name-change");
 profileBtn.addEventListener("click", () => {
   name = prompt("What's your name?");
   if (name) localStorage.setItem("name", name);
 });
 
+//get weather data
 async function getWeather() {
   const API = API_KEY;
   const city = document.getElementById("city").value;
@@ -69,7 +70,9 @@ async function getWeather() {
     console.error("Error fetching weather:", err);
   }
 }
-document.getElementById("search-btn").addEventListener("click", getWeather);
+document
+  .getElementById("search-btn")
+  .addEventListener("click", () => getWeather());
 
 function displayWeather(data) {
   const tempDivInfo = document.getElementById("temp");
@@ -139,6 +142,7 @@ function showImage() {
   weatherIcon.style.display = "block";
 }
 
+// light or dark mode
 let darkmode = localStorage.getItem("darkmode");
 const themeSwitch = document.getElementById("theme-switch");
 if (darkmode === "active") {

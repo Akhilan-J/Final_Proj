@@ -1,3 +1,4 @@
+//Personalized Greeting
 const now = new Date();
 const Time = now.toLocaleTimeString();
 const CurrTime = parseInt(Time.slice(0, 2));
@@ -8,7 +9,6 @@ if (CurrTime >= 0 && CurrTime < 12) {
   greet = "Evening";
 }
 let name = localStorage.getItem("name");
-
 if (!name) {
   name = prompt("What's your name?");
   if (name) localStorage.setItem("name", name);
@@ -24,6 +24,7 @@ profileBtn.addEventListener("click", () => {
   greeting.innerText = `Good ${greet} ${name}`;
 });
 
+//Getting Random fact
 async function getFact() {
   try {
     const res = await fetch(
@@ -46,6 +47,7 @@ async function renderFact() {
 }
 renderFact();
 
+//Light or dark mode
 let darkmode = localStorage.getItem("darkmode");
 const themeSwitch = document.getElementById("theme-switch");
 if (darkmode === "active") {
