@@ -114,6 +114,7 @@ form input {
   border: 1px;
   border-color: #ffffff;
   background: var(--task-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
   border-radius: 2rem;
 }
 
@@ -135,7 +136,7 @@ form button {
 form button:hover {
   color: white;
   background: rgb(3, 78, 0);
-  transition: all 0.6 ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 form {
   min-height: 20vh;
